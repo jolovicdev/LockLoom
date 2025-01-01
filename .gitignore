@@ -1,0 +1,57 @@
+#TYPICAL IGNORE FILE
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.env
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+# Project specific
+data/*
+!data/.gitkeep
+
+# Build artifacts
+*.spec
+*.manifest
+*.exe
+*.log
+
+# Local development
+local_settings.py
+db.sqlite3
+*.db
+
+# Documentation
+docs/_build/
+site/
+
+# Misc
+*.bak
+*.tmp
+*.temp
+.cache
