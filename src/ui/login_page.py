@@ -76,13 +76,13 @@ class LoginPage:
         if username in self.login_attempts:
             attempts, last_attempt = self.login_attempts[username]
             if attempts >= 3:
-                time_diff = (ui.current_time() - last_attempt).total_seconds()
+                time_diff = (time.time() - last_attempt)
                 if time_diff < 300:  # 5 minutes lockout
                     ui.notify(f'Account locked. Try again in {5-int(time_diff/60)} minutes', 
                             type='negative')
                     return
                 else:
-                    self.login_attempts[username] = (0, ui.current_time())
+                    self.login_attempts[username] = (0, time.time())
         
         # Validate input
         if not username or not password:
@@ -97,8 +97,8 @@ class LoginPage:
             self.on_login_success()
         else:
             # Track failed attempt
-            attempts = self.login_attempts.get(username, (0, ui.current_time()))[0] + 1
-            self.login_attempts[username] = (attempts, ui.current_time())
+            attempts = self.login_attempts.get(username, (0, time.time()))[0] + 1
+            self.login_attempts[username] = (attempts, time.time())
             
             ui.notify('Invalid credentials!', type='negative')
             self.password.value = ''  # Clear password on failed login
